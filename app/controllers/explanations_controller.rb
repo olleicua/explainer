@@ -14,7 +14,8 @@ class ExplanationsController < ApplicationController
 
   # GET /explanations/new
   def new
-    @explanation = Explanation.new
+    explanation_params = params[:statement_id] ? { statement_id: params[:statement_id] } : {}
+    @explanation = Explanation.new explanation_params
   end
 
   # GET /explanations/1/edit

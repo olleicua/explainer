@@ -14,7 +14,8 @@ class DefinitionsController < ApplicationController
 
   # GET /definitions/new
   def new
-    @definition = Definition.new
+    definition_params = params[:term] ? { term: params[:term] } : {}
+    @definition = Definition.new definition_params
   end
 
   # GET /definitions/1/edit

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140817182207) do
+ActiveRecord::Schema.define(version: 20140817191920) do
 
   create_table "definitions", force: true do |t|
     t.string   "term"
@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 20140817182207) do
   end
 
   create_table "explanations", force: true do |t|
-    t.string   "content"
+    t.text     "content",      limit: 255
     t.integer  "statement_id"
     t.datetime "created_at"
     t.datetime "updated_at"

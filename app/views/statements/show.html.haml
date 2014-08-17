@@ -1,0 +1,28 @@
+%p#notice= notice
+%p
+  %strong Title:
+  = @statement.title
+%p
+  %strong Content:
+  = with_references(@statement.content).html_safe
+= link_to 'Edit', edit_statement_path(@statement)
+|
+\#{link_to 'Back', statements_path}
+
+%p
+  %strong Explanations
+
+%table
+  %thead
+    %tr
+      %th Content
+      %th{:colspan => "3"}
+  %tbody
+    - @statement.explanations.each do |explanation|
+      %tr
+        %td= truncate explanation.content, length: 20
+        %td= link_to 'Show', explanation
+        %td= link_to 'Edit', edit_explanation_path(explanation)
+        %td= link_to 'Destroy', explanation, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Explanation', new_statement_explanation_path(@statement)

@@ -1,0 +1,16 @@
+= form_for(@explanation) do |f|
+  = f.hidden_field :statement_id
+  - if @explanation.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@explanation.errors.count, "error")
+        prohibited this explanation from being saved:
+      %ul
+        - @explanation.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :content
+    %br/
+    = f.text_area :content
+  .actions
+    = f.submit

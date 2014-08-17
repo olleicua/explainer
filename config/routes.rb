@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
+
+  get '/' => 'statements#index'
+
   resources :definitions
 
   resources :explanations
 
   resources :statements
+
+  get '/definitions/:term/new' => 'definitions#new', as: 'new_named_definition'
+
+  get '/statements/:statement_id/explanations/new' => 'explanations#new', as: 'new_statement_explanation'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

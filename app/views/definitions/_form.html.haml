@@ -1,0 +1,19 @@
+= form_for(@definition) do |f|
+  - if @definition.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@definition.errors.count, "error")
+        prohibited this definition from being saved:
+      %ul
+        - @definition.errors.full_messages.each do |message|
+          %li= message
+  .field
+    = f.label :term
+    %br/
+    = f.text_field :term
+  .field
+    = f.label :content
+    %br/
+    = f.text_area :content
+  .actions
+    = f.submit
